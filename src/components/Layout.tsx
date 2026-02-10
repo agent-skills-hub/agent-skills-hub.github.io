@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import { Menu, Github, Twitter, Download } from 'lucide-react'; 
+import { Menu, X, Github, Twitter, Download } from 'lucide-react'; 
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -77,9 +77,16 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
       <div className="flex-1 w-full px-4 md:px-6 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10 pt-6 pb-8">
         {/* Sidebar */}
         <aside className={cn(
-          "fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block",
+          "fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r bg-background md:sticky md:block",
           sidebarOpen ? "block" : "hidden"
         )}>
+          <button
+            className="absolute right-4 top-4 md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X className="h-5 w-5" />
+            <span className="sr-only">Close Menu</span>
+          </button>
           <div className="py-6 pl-8 pr-6 lg:py-8">
             <h4 className="mb-4 text-sm font-semibold tracking-tight">
               Categories
@@ -88,6 +95,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
               <NavLink
                 to="/"
                 end
+                onClick={() => setSidebarOpen(false)}
                 className={({ isActive }) =>
                   cn(
                     "block px-2 py-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors",
@@ -101,6 +109,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
                 <NavLink
                   key={category}
                   to={`/category/${category}`}
+                  onClick={() => setSidebarOpen(false)}
                   className={({ isActive }) =>
                     cn(
                       "block px-2 py-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors capitalize",
