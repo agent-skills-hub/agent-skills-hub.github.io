@@ -6,13 +6,13 @@ interface InstallCommandProps {
   skill: Skill;
 }
 
-type Platform = 'claude' | 'openai' | 'gemini' | 'codex';
+type Platform = 'cursor' | 'claude' | 'gemini' | 'codex' | 'openclaw' | 'default';
 
 export const InstallCommand: React.FC<InstallCommandProps> = ({ skill }) => {
   const [platform, setPlatform] = useState<Platform>('claude');
   const [copied, setCopied] = useState(false);
 
-  const command = `npx agent-skills-hub install ${skill.name} --${platform}`;
+  const command = `npx agent-skills-hub install ${skill.name}${platform !== 'default' ? ` --${platform}` : ''}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(command);
@@ -33,10 +33,12 @@ export const InstallCommand: React.FC<InstallCommandProps> = ({ skill }) => {
             onChange={(e) => setPlatform(e.target.value as Platform)}
             className="bg-transparent border-none text-xs text-primary font-medium focus:ring-0 cursor-pointer"
            >
+             <option value="cursor">Cursor</option>
              <option value="claude">Claude</option>
-             <option value="openai">OpenAI</option>
              <option value="gemini">Gemini</option>
              <option value="codex">Codex</option>
+             <option value="openclaw">OpenClaw</option>
+             <option value="default">Default</option>
            </select>
         </div>
       </div>
