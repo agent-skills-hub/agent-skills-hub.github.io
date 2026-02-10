@@ -11,7 +11,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill, onClick }) => {
   return (
     <div 
       onClick={onClick}
-      className="group relative flex flex-col justify-between p-6 bg-card hover:bg-accent/50 border border-border rounded-xl transition-all cursor-pointer hover:shadow-md"
+      className="group relative flex flex-col justify-between p-8 min-h-[280px] bg-card hover:bg-accent/50 border border-border rounded-2xl transition-all cursor-pointer hover:shadow-lg"
     >
       <div>
         <div className="flex items-center justify-between mb-3">
@@ -19,7 +19,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill, onClick }) => {
             {skill.category}
           </span>
         </div>
-        <h3 className="text-lg font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">
+        <h3 className="text-xl font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">
           {skill.name}
         </h3>
         <p className="text-sm text-muted-foreground line-clamp-3 mb-4">

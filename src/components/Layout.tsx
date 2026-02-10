@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import { Menu, Github, Twitter } from 'lucide-react'; 
+import { Menu, Github, Twitter, Download } from 'lucide-react'; 
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -41,6 +41,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
              <div className="w-full flex-1 md:w-auto md:flex-none">
              </div>
              <nav className="flex items-center gap-1">
+              <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.npmjs.com/package/agent-skills-hub"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0"
+                >
+                  <Download className="h-5 w-5" />
+                  <span className="sr-only">NPM</span>
+                </a>
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -59,6 +68,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
                 </a>
+                
              </nav>
           </div>
         </div>
@@ -106,8 +116,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, categories }) => {
         </aside>
 
         {/* Main Content */}
-        <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-          <div className="mx-auto w-full min-w-0 pr-4">
+        <main className="relative py-6 lg:py-8">
+          <div className="w-full min-w-0">
             {children}
           </div>
         </main>
