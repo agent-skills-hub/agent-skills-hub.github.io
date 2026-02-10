@@ -12,7 +12,7 @@ export const InstallCommand: React.FC<InstallCommandProps> = ({ skill }) => {
   const [platform, setPlatform] = useState<Platform>('claude');
   const [copied, setCopied] = useState(false);
 
-  const command = `npx install agent-skills-hub ${skill.name} --${platform}`;
+  const command = `npx agent-skills-hub install ${skill.name} --${platform}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(command);
